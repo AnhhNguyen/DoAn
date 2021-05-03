@@ -1,0 +1,111 @@
+<mat-card class="dialog-box-shadow">
+  <div class="title-dialog text-center system-custom" role="alert">
+    <h5 class="text-uppercase font-weight-bolder" i18n>INFOMATION CATEGORYTYPE</h5>
+  </div>
+  <mat-card-content>
+    <form [formGroup]="form" class="col-md-12">
+      <div class="row custom-overflow">
+
+                <!-- name field -->                                                           
+        <div class="col-md-12">                                                       
+          <mat-form-field class="example-full-width">                                 
+            <mat-label i18n>name <span class="text-red">*</span></mat-label>           
+            <input matInput [(ngModel)]="input.name" formControlName="name">          
+            <button mat-button *ngIf="input.name" matSuffix mat-icon-button           
+             aria-label="Clear" (click)="input.name=''">                            
+              <mat-icon>close</mat-icon>                                              
+            </button>                                                                 
+          </mat-form-field>                                                           
+                                                                                      
+          <div class="alert alert-danger" *ngIf="form.controls['name'].invalid      
+              && (form.controls['name'].dirty || form.controls['name'].touched)"> 
+            <div *ngIf="form.controls['name'].errors.required" i18n>                
+              Vui lòng nhập trường này.                                               
+            </div>                                                                    
+          </div>                                                                      
+        </div>                                                                        
+
+        <!-- status field -->                                                           
+        <div class="col-md-12">                                                       
+          <mat-form-field class="example-full-width">                                 
+            <mat-label i18n>status <span class="text-red">*</span></mat-label>           
+            <input matInput [(ngModel)]="input.status" formControlName="status">          
+            <button mat-button *ngIf="input.status" matSuffix mat-icon-button           
+             aria-label="Clear" (click)="input.status=''">                            
+              <mat-icon>close</mat-icon>                                              
+            </button>                                                                 
+          </mat-form-field>                                                           
+                                                                                      
+          <div class="alert alert-danger" *ngIf="form.controls['status'].invalid      
+              && (form.controls['status'].dirty || form.controls['status'].touched)"> 
+            <div *ngIf="form.controls['status'].errors.required" i18n>                
+              Vui lòng nhập trường này.                                               
+            </div>                                                                    
+          </div>                                                                      
+        </div>                                                                        
+
+        <!-- description field -->                                                           
+        <div class="col-md-12">                                                       
+          <mat-label i18n>description<span class="text-red">*</span></mat-label>                             
+          <ckeditor [(ngModel)]="input.description" formControlName="description" [config]="{uiColor: '#16c1c3'}" 
+            debounce="500">                                                            
+          </ckeditor>                                                                                     
+                                                                                      
+          <div class="alert alert-danger" *ngIf="form.controls['description'].invalid      
+              && (form.controls['description'].dirty || form.controls['description'].touched)"> 
+            <div *ngIf="form.controls['description'].errors.required" i18n>                
+              Vui lòng nhập trường này.                                               
+            </div>                                                                    
+          </div>                                                                      
+        </div>                                                                        
+
+        <!-- createdAt field -->                                                           
+        <div class="col-md-12">                                                       
+          <mat-form-field class="example-full-width" appearance="fill">                                   
+            <mat-label i18n>createdAt<span class="text-red">*</span></mat-label>                          
+            <input matInput [(ngModel)]="input.createdAt" formControlName="createdAt" [matDatepicker]="pickercreatedAt"> 
+            <mat-datepicker-toggle matSuffix [for]="pickercreatedAt"></mat-datepicker-toggle>                  
+            <mat-datepicker touchUi #pickercreatedAt></mat-datepicker>                                         
+          </mat-form-field>                                                                               
+                                                                                      
+          <div class="alert alert-danger" *ngIf="form.controls['createdAt'].invalid      
+              && (form.controls['createdAt'].dirty || form.controls['createdAt'].touched)"> 
+            <div *ngIf="form.controls['createdAt'].errors.required" i18n>                
+              Vui lòng nhập trường này.                                               
+            </div>                                                                    
+          </div>                                                                      
+        </div>                                                                        
+
+        <!-- updatedAt field -->                                                           
+        <div class="col-md-12">                                                       
+          <mat-form-field class="example-full-width" appearance="fill">                                   
+            <mat-label i18n>updatedAt<span class="text-red">*</span></mat-label>                          
+            <input matInput [(ngModel)]="input.updatedAt" formControlName="updatedAt" [matDatepicker]="pickerupdatedAt"> 
+            <mat-datepicker-toggle matSuffix [for]="pickerupdatedAt"></mat-datepicker-toggle>                  
+            <mat-datepicker touchUi #pickerupdatedAt></mat-datepicker>                                         
+          </mat-form-field>                                                                               
+                                                                                      
+          <div class="alert alert-danger" *ngIf="form.controls['updatedAt'].invalid      
+              && (form.controls['updatedAt'].dirty || form.controls['updatedAt'].touched)"> 
+            <div *ngIf="form.controls['updatedAt'].errors.required" i18n>                
+              Vui lòng nhập trường này.                                               
+            </div>                                                                    
+          </div>                                                                      
+        </div>                                                                        
+
+   
+
+      </div>
+    </form>
+  </mat-card-content> 
+
+  <!--Modal -->
+  <div class="text-center" style="margin-top: 10px;">
+    <button type="button" [disabled]="!form.valid || isUpdate" cdkFocusInitial (click)="onBtnSubmitClick()" class="btn btn-success btn-fw mr-3 custom-button" i18n>
+      <i class="fa fa-check"></i>
+      Đồng ý</button>
+    <button class="btn btn-warning custom-margin-button custom-button" [mat-dialog-close]="data.animal" i18n> <i
+        class="fa fa-times"></i> Đóng</button>
+  </div>
+
+</mat-card> 
